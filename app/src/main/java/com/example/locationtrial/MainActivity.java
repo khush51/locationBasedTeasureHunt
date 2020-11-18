@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -16,6 +17,12 @@ import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -25,10 +32,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button show;
+    Button show , map;
     TextView text1, text2, text3, text4, text5;
 
+    Location locationToBePassed;
+
     FusedLocationProviderClient fusedLocationProviderClient;
+
+    SupportMapFragment svm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         text3 = (TextView) findViewById(R.id.text3);
         text4 = (TextView) findViewById(R.id.text4);
         text5 = (TextView) findViewById(R.id.text5);
+
+        svm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -58,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                  */
             }
         });
-
     }
 
     private void getLocation() {
@@ -71,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
                 Location location = task.getResult();
+                locationToBePassed = location;
                 if (location != null) {
                     try {
                         Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
@@ -86,6 +99,19 @@ public class MainActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
+                    svm.getMapAsync(new OnMapReadyCallback() {
+                        @Override
+                        public void onMapReady(GoogleMap googleMap) {
+
+                            LatLng latLng = new LatLng(location.getLatitude() , location.getLongitude());
+                            MarkerOptions options = new MarkerOptions().position(latLng).title("current");
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng , 10));
+                            googleMap.addMarker(options);
+
+                        }
+                    });
+
                 }
             }
         });
