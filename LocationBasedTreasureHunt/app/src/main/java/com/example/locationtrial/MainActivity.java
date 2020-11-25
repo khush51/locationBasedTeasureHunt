@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -104,15 +105,40 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onMapReady(GoogleMap googleMap) {
 
+                            if(distancebetween(location.getLatitude() , location.getLongitude() , location.getLatitude() , location.getLongitude()) < 0.1)
+                                Toast.makeText(getApplicationContext() , "done" , Toast.LENGTH_SHORT).show();
+                            else
+                                Toast.makeText(getApplicationContext() , "not done" , Toast.LENGTH_SHORT).show();
                             LatLng latLng = new LatLng(location.getLatitude() , location.getLongitude());
                             MarkerOptions options = new MarkerOptions().position(latLng).title("current");
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng , 10));
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng , 17));
                             googleMap.addMarker(options);
 
                         }
                     });
 
                 }
+            }
+
+            private double distancebetween(double latitude, double longitude, double v, double v1) {
+
+                double earthRadius = 3958.75; // in miles, change to 6371 for kilometer output
+
+                double dLat = Math.toRadians(v-latitude);
+                double dLng = Math.toRadians(v1-longitude);
+
+                double sindLat = Math.sin(dLat / 2);
+                double sindLng = Math.sin(dLng / 2);
+
+                double a = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)
+                        * Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(longitude));
+
+                double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+                double dist = earthRadius * c;
+
+                return dist; // output distance, in MILES
+
             }
         });
     }
