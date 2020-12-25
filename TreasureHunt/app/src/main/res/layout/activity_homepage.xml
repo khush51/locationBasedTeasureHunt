@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Homepage"
+    android:background="@drawable/outline">
+
+    <ImageView
+        android:id="@+id/board"
+        android:layout_width="match_parent"
+        android:layout_height="186dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/b1__2_" />
+
+
+    <LinearLayout
+        android:id="@+id/lay1"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/homedoor"
+        android:layout_marginTop="250dp"
+        android:orientation="vertical"
+        android:padding="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="302dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/sign_board"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <Button
+                android:id="@+id/register"
+                style="@style/buttonstyles"
+                android:text="@string/register"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                />
+
+            <Button
+                android:id="@+id/login"
+                style="@style/buttonstyles"
+                android:text="@string/login" />
+
+            <Button
+                android:id="@+id/guest"
+                style="@style/buttonstyles"
+                android:text="@string/guest"
+                android:layout_marginTop="35dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/about"
+        android:textAlignment="center"
+        style="@style/textmain"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/lay1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="@color/buttoncolor"
+        android:text="@string/about"
+        android:layout_marginBottom="5dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/black" />
+
+
+</RelativeLayout>

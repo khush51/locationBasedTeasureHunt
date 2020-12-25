@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/outline">
+
+    <RelativeLayout
+        android:id="@+id/details_layout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:background="@drawable/userdetails"
+        android:backgroundTintMode="src_atop">
+
+    <TextView
+        android:id="@+id/username"
+        android:text="Username:"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        style="@style/logostyle"
+        android:layout_marginTop="200dp"
+        android:textSize="20sp"
+        android:hint="@string/enter_username" />
+
+    <TextView
+        android:id="@+id/name"
+        android:text="Full Name:"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        style="@style/logostyle"
+        android:textSize="20sp"
+        android:hint="@string/enter_name"
+        android:layout_below="@id/username"/>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_marginTop="-30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/details_layout"
+        android:layout_centerHorizontal="true"
+        android:text="@string/logout"
+        style="@style/buttonstyles"
+        android:background="#00000000"
+        />
+
+
+
+
+</RelativeLayout>

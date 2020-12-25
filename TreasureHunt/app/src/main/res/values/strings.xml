@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Treasure Hunt</string>
+    <string name="name">Treasure \n web</string>
+    <string name="tagline">Hunt fear...find treasure</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="guest">Play as guest</string>
+    <string name="score">SCORE</string>
+    <string name="level">LEVEL</string>
+    <string name="newgame">NEW GAME</string>
+    <string name="cont">CONTINUE</string>
+    <string name="submit">SUBMIT</string>
+    <string name="help">\nHELP</string>
+    <string name="help_text">
+
+         \n TREASURE WEB application deals with location thus first thing that you will require is internet connectivity.
+
+        \n Steps to play:
+
+        \n 1> REGISTER if your a novice user, Login if you  are current user ,Play as guest if you do not want your performance to be stored.
+        \n (HINT: Play as guest will only allow you to play as One Time User)
+        \n 2> Select NEWGAME if you want to start all over again or even if your a new user.
+        \n 3> Select CONTINUE to continue the game from the last played level.
+        \n 4> SCOREBOARD to view the score board
+        \n 5> Click on START button to start the game.
+        \n 6> Chose location according to your convinience and SUBMIT.
+        \n 7> A CLUE will pop up and You have to Click LETS GO button to continue.
+        \n 8> On getting a wrong answer ,you need to exit from the game and play it all again!
+
+        \nTHANK YOU
+
+    </string>
+    <string name="about">\n ABOUT</string>
+    <string name="enter_name">Enter full name</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_pass">Enter Password</string>
+    <string name="reenter_pass">Re-enter Password</string>
+    <string name="location">Choose location</string>
+    <string name="clue">Here\'s Your Clue!</string>
+    <string name="go">Lets\'s GO!</string>
+    <string name="scoreboard">SCORE BOARD</string>
+    <string name="congratulation">CONGRATULATIONS!</string>
+    <string name="correctans">Correct answer!</string>
+    <string name="opps">OPPS! U missed it.</string>
+    <string name="wrongtans">Wrong answer!</string>
+    <string name="logout">Logout</string>
+
+    <string-array name="spin_list">
+        <item>Siolim</item>
+        <item>Goa University</item>
+        <item>Sankhalim</item>
+    </string-array>
+</resources>

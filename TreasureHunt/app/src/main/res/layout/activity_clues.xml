@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Clues"
+    android:background="@drawable/outline">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/outline"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/back_buttton"
+            style="@style/backstyle"
+            />
+        <ImageView
+            android:id="@+id/board"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/about" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp">
+        <TextView
+            android:id="@+id/main"
+            android:textColor="@color/black"
+            style="@style/logostyle"
+            android:textSize="40sp"
+            android:layout_gravity="center"
+            android:text="@string/clue" />
+
+        <TextView
+            android:id="@+id/clue"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/clue_textbox"
+            android:fontFamily="serif"
+            android:hint="@string/clue"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+
+        <fragment
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:id="@+id/map"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/show"
+            android:layout_marginRight="10dp"
+            android:background="@color/yellow"
+            android:text="GET LOCATION"/>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/confirm"
+            android:layout_marginLeft="10dp"
+            android:background="@color/yellow"
+            android:text="CONFIRM"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

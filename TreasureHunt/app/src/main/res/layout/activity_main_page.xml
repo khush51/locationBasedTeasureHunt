@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainPage"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/outline"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/back_buttton"
+            style="@style/backstyle"
+             />
+
+        <TextView
+            android:id="@+id/logo"
+            style="@style/logostyle"
+            android:layout_below="@+id/back_buttton"
+            android:text="@string/name" />
+
+        <Button
+            android:id="@+id/profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/back_buttton"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="82dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/profile"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@id/logo"
+            android:fontFamily="cursive"
+            android:text="username"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_marginTop="-80dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="@color/yellow"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/score"
+                android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/scorename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/score"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    style="@style/textmain" />
+
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/scorename"
+                    android:layout_centerHorizontal="true"
+                    android:includeFontPadding="false"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="35sp" />
+
+        </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="@color/yellow"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/level"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/levelname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/level"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    style="@style/textmain" />
+
+                <TextView
+                    android:id="@+id/level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="1"
+                    android:textSize="35sp"
+                    android:layout_below="@id/levelname"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/white"
+                    />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/door1">
+
+   <LinearLayout
+       android:id="@+id/linearlay_buttons"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="20dp"
+       android:layout_marginTop="85dp"
+       android:orientation="vertical">
+
+       <Button
+           android:id="@+id/newgame"
+           android:text="@string/newgame"
+           android:fontFamily="sans-serif-black"
+           style="@style/buttonstyles" />
+
+       <Button
+           android:id="@+id/cont"
+           android:text="@string/cont"
+           android:fontFamily="sans-serif-black"
+           style="@style/buttonstyles"/>
+
+       <Button
+           android:id="@+id/scoreboard"
+           android:text="@string/scoreboard"
+           android:fontFamily="sans-serif-black"
+           style="@style/buttonstyles"/>
+
+   </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="280dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+
+            <Button
+                android:id="@+id/help"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/yellow"
+                android:drawableStart="@drawable/help"
+                android:padding="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
+
+            <Button
+                android:id="@+id/about"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="250dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/yellow"
+                android:drawableEnd="@drawable/about"
+                android:padding="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="345dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/help"
+
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/black"
+                android:textAlignment="textStart"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+
+                android:layout_marginLeft="260dp"
+                android:text="@string/about"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

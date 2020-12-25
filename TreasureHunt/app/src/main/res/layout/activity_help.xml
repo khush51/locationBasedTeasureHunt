@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Help"
+    android:background="@drawable/outline">
+    <Button
+        android:id="@+id/back_buttton"
+        style="@style/backstyle"
+        />
+
+    <ImageView
+        android:id="@+id/board"
+        style="@style/logoimagestyle"/>
+
+    <TextView
+        android:layout_below="@id/board"
+        style="@style/logostyle"
+        android:text="@string/help"/>
+
+    <LinearLayout
+        android:layout_marginTop="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="@drawable/treasurebackground">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="TREASURE WEB application deals with location thus first thing that you will require is internet connectivity. \n\nSteps to play:\n1> REGISTER if your a novice user, Login if you  are current user ,Play as guest if you don\'t want your performance to be stored.
+ \n(HINT: Play as guest will only allow you to play as One Time User) \n2> Select NEWGAME if you want to start all over again or even if your a new user. \n3> Select CONTINUE to continue the game from the last played level. \n4> SCOREBOARD to view the score board. \n5> Click on START button to start the game. \n6> Chose location according to your convinience and SUBMIT. \n7> A CLUE will pop up and You have to Click LETS GO button to continue. \n8> On getting a wrong answer ,you need to exit from the game and play it all again!
+THANK YOU"
+            android:textStyle="bold"
+            android:layout_marginTop="45dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="40dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Wrong_ans">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/outline"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/back_buttton"
+            style="@style/backstyle"
+            />
+        <ImageView
+            android:id="@+id/board"
+            android:layout_width="match_parent"
+            android:layout_height="186dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/b2written" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/outline">
+
+
+        <ImageView
+            android:id="@+id/wrongimg"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/wrong"/>
+        <TextView
+            android:id="@+id/oppstxt"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
+            style="@style/logostyle"
+            android:text="@string/opps" />
+        <TextView
+            android:id="@+id/wrongtxt"
+            android:layout_below="@id/wrongimg"
+            android:layout_centerHorizontal="true"
+            android:textStyle="italic"
+            style="@style/logostyle"
+            android:text="@string/wrongtans" />
+
+
+
+        <Button
+            android:id="@+id/exit"
+            style="@style/buttonstyles"
+            android:layout_below="@id/wrongtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@color/yellow"
+            android:text="EXIT" />
+    </RelativeLayout>
+
+</RelativeLayout>

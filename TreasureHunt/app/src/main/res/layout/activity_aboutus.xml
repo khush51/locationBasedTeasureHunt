@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Aboutus"
+    android:background="@drawable/outline">
+
+
+    <Button
+        android:id="@+id/back_buttton"
+        style="@style/backstyle"
+        android:layout_width="117dp"
+        android:layout_height="73dp" />
+
+    <ImageView
+        android:id="@+id/board"
+        style="@style/logoimagestyle" />
+
+    <TextView
+        android:layout_below="@id/board"
+        style="@style/logostyle"
+        android:text="@string/about"/>
+
+    <LinearLayout
+        android:layout_marginTop="350dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textStyle="italic"
+            android:fontFamily="sans-serif-black"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="TREASURE WEB application is developed to allow users to play a game basically known as  Treasure Hunt .This application is designed for those enthusiastic people to keep them connected to their talent .Its a base application but would promise to update it with new features very soon.
+  \n\n TREASURE WEB app requires Internet connectivity since it's related to using GPS. The app will provide you with a clue and through your intellectual skills you need to find the treasure going to that specific location.
+    "/>
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/halloween"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
