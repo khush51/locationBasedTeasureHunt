@@ -24,6 +24,7 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
 
+
         register=findViewById(R.id.register);
         login=findViewById(R.id.login);
         guest=findViewById(R.id.guest);
@@ -40,33 +41,47 @@ public class Homepage extends AppCompatActivity {
         guest.setAnimation(bottomAnim);
         board.setAnimation(topAnim);
 
+//        if(DemoData.loggedInPlayer.username == null || DemoData.loggedInPlayer.username == ""){
+//            Toast.makeText(getApplicationContext() , "null" , Toast.LENGTH_SHORT).show();
+//            login.setVisibility(View.VISIBLE);
+//            register.setVisibility(View.VISIBLE);
+//            guest.setVisibility(View.VISIBLE);
+//        }
+//        else {
+//            Toast.makeText(getApplicationContext() , "not null" , Toast.LENGTH_SHORT).show();
+//            login.setVisibility(View.GONE);
+//            register.setVisibility(View.GONE);
+//            guest.setVisibility(View.GONE);
+//        }
+
         guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(Homepage.this,MainPage.class);
-                intent.putExtra("data" , "Guest$NULL$0$0");
+                intent.putExtra("data" , "Guest$NULL$0$0$");
+                intent.putExtra("new",true);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Homepage.this, "login with credentials", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Homepage.this, "login with credentials", Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(Homepage.this,Login.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Homepage.this, "register ..", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Homepage.this, "register ..", Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(Homepage.this,Register.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 
@@ -75,7 +90,7 @@ public class Homepage extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent =new Intent(Homepage.this,Aboutus.class);
                 startActivity(intent);
-                finish(); //if pressed back goes back of application
+//                finish(); //if pressed back goes back of application
             }
         });
 

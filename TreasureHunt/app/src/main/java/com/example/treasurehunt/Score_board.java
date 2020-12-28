@@ -48,14 +48,14 @@ public class Score_board extends AppCompatActivity {
             if(data.charAt(i) == '$'){
 
                 scoredata[j] = data.substring(k , i);
-                Log.i("loop" , scoredata[j]);
+//                Log.i("loop" , scoredata[j]);
                 j++;
                 k = i+1;
             }
         }
 //        scoredata[j] = data.substring(k , data.length());
 
-        Log.e("llll","goooooo");
+//        Log.e("llll","goooooo");
         i = 0;
         j = 0;
         k = 0;
@@ -70,13 +70,13 @@ public class Score_board extends AppCompatActivity {
             k = 0;
             l = 0;
 
-            Log.e("score 222",scoredata[i]);
+//            Log.e("score 222",scoredata[i]);
             for(j = 0 ; j < scoredata[i].length() ; j++)
             {
                 if(scoredata[i].charAt(j) == '/'){
 
                     temp[l] = scoredata[i].substring(k , j);
-                    Log.i("loop" , temp[l]);
+//                    Log.i("loop" , temp[l]);
                     l++;
                     k = j+1;
                 }
@@ -89,16 +89,16 @@ public class Score_board extends AppCompatActivity {
             game.score = temp[2];
 //            Log.e("score 333",temp[2]);
             gamescore.add(game);
-            Log.e("ganescore",gamescore.get(i).username);
+//            Log.e("ganescore",gamescore.get(i).username);
 
             i++;
 
         }
 
 //        MyAdapter myAdapter = new MyAdapter(this , android.R.layout.simple_list_item_1 , game);
-
-        for(i=0;i<gamescore.size();i++)
-            Log.e("gamecheck",gamescore.get(i).username);
+//
+//        for(i=0;i<gamescore.size();i++)
+//            Log.e("gamecheck",gamescore.get(i).username);
 
 
         MyAdapter myAdapter = new MyAdapter(this , android.R.layout.simple_list_item_1 , gamescore);

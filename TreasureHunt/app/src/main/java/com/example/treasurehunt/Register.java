@@ -2,6 +2,7 @@ package com.example.treasurehunt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +15,11 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 
-public class Register extends AppCompatActivity {
+public class Register extends AppCompatActivity implements AsyncResponse{
 
     Animation middleAnim;
     ImageView board;
+    ProgressDialog progressDialog;
 
 //    DatabaseClient dbclient;
     //DataBaseHelper db;
@@ -31,7 +33,9 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        final BackgroundWorker backgroundWorker =  new BackgroundWorker(getApplicationContext());
 
+        backgroundWorker.value = this;
 /*
         dbclient = new DatabaseClient(this);
         dbclient.open();
@@ -55,6 +59,8 @@ public class Register extends AppCompatActivity {
             }
         });
 
+        progressDialog = new ProgressDialog(this);
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,8 +69,8 @@ public class Register extends AppCompatActivity {
                 String password1 = pass1.getText().toString();
                 String password2 = pass2.getText().toString();
 
-                BackgroundWorker backgroundWorker =  new BackgroundWorker(getApplicationContext());
-                Toast.makeText(getApplicationContext() , "background..." , Toast.LENGTH_SHORT).show();
+
+//                Toast.makeText(getApplicationContext() , "background..." , Toast.LENGTH_SHORT).show();
 //
                 if(password1.equals(password2) == false)
                 {
@@ -73,6 +79,10 @@ public class Register extends AppCompatActivity {
                 else
                 {
                     backgroundWorker.execute("register" , fname , uname , password1, password2);
+                    progressDialog.setTitle("Register..");
+                    progressDialog.setMessage("Registering... please wait..");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
 //                    if(DemoData.flag)
 //                        startActivity(new Intent(getApplicationContext() , Login.class));
                 }
@@ -81,5 +91,13 @@ public class Register extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void processFinish(String output) {
+        progressDialog.hide();
+        Intent intent = new Intent(this,Homepage.class);
+        startActivity(intent);
+        finish();
     }
 }

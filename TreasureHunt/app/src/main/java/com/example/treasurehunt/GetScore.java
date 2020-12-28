@@ -39,9 +39,9 @@ public class GetScore extends AsyncTask<String , Void , String> {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
-            Log.i("logtag" , "before o/p stream");
+//            Log.i("logtag" , "before o/p stream");
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            Log.i("logtag" , "after o/p stream");
+//            Log.i("logtag" , "after o/p stream");
 //                OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
             String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(DemoData.loggedInPlayer.username,"UTF-8");

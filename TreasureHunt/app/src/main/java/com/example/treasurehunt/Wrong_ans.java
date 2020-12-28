@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Wrong_ans extends AppCompatActivity {
+public class Wrong_ans extends AppCompatActivity implements AsyncResponse {
 
     Button back_button,exit;
     Animation topAnim,bottomAnim,middleAnim;
@@ -35,6 +36,10 @@ public class Wrong_ans extends AppCompatActivity {
         bottomAnim= AnimationUtils.loadAnimation(this,R.anim.bottom_animation);
         middleAnim= AnimationUtils.loadAnimation(this,R.anim.middle_animation);
 
+        final UpdateScore updateScore = new UpdateScore(this);
+
+        updateScore.score = this;
+
 
         //set animations
         //assign animations to image and text
@@ -49,9 +54,9 @@ public class Wrong_ans extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Wrong_ans.this, "exiting..", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Wrong_ans.this, "exiting..", Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(Wrong_ans.this,MainPage.class);
-                intent.putExtra("player" , false);
+//                intent.putExtra("player" , false);
                 startActivity(intent);
                 finish();
             }
@@ -61,12 +66,28 @@ public class Wrong_ans extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Wrong_ans.this, "Exiting...", Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(Wrong_ans.this,MainPage.class);
-                intent.putExtra("player" , false);
-                startActivity(intent);
-                finish();
+
+                Log.e("hehhhlo", String.valueOf(DemoData.loggedInPlayer.name));
+//                Toast.makeText(Wrong_ans.this, "Exiting...", Toast.LENGTH_SHORT).show();
+                DemoData.loggedInPlayer.no_complete_sets = String.valueOf(0);
+                DemoData.loggedInPlayer.points = String.valueOf(0);
+
+                Log.e("hellllo",String.valueOf(DemoData.gameDetails.locality));
+                updateScore.execute();
+
             }
         });
+    }
+
+    @Override
+    public void processFinish(String output) {
+        Log.e("wrong output",output);
+//        Toast.makeText(this, output, Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(Wrong_ans.this,MainPage.class);
+//        intent.putExtra("data" , DemoData.loggedInPlayer.name+"$"+DemoData.loggedInPlayer.username+"$"+DemoData.loggedInPlayer.no_complete_sets+"$"+DemoData.loggedInPlayer.points+"$");
+        intent.putExtra("new",false);
+        startActivity(intent);
+//        finish();
+
     }
 }

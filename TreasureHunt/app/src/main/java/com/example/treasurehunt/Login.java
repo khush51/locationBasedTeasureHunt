@@ -2,6 +2,7 @@ package com.example.treasurehunt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Login extends AppCompatActivity implements AsyncResponse{
 
-
+    ProgressDialog progressDialog;
     Animation middleAnim;
     ImageView board;
 
@@ -30,6 +31,8 @@ public class Login extends AppCompatActivity implements AsyncResponse{
         setContentView(R.layout.activity_login);
 
         final BackgroundWorker backgroundWorker = new BackgroundWorker(getApplicationContext());
+
+        progressDialog = new ProgressDialog(this);
 
         username = (TextInputEditText) findViewById(R.id.loginUsername);
         password = (TextInputEditText) findViewById(R.id.loginPassword);
@@ -45,7 +48,7 @@ public class Login extends AppCompatActivity implements AsyncResponse{
             public void onClick(View view) {
                 Intent intent=new Intent(Login.this,Homepage.class);
                 startActivity(intent);
-                finish(); //if pressed back goes back of application
+//                finish(); //if pressed back goes back of application
             }
         });
 
@@ -66,6 +69,10 @@ public class Login extends AppCompatActivity implements AsyncResponse{
 //                backgroundWorker.value = this;
                 backgroundWorker.execute("login" , usernm , pass);
 //                Toast.makeText(getApplicationContext() , "executed..." , Toast.LENGTH_SHORT).show();
+                progressDialog.setTitle("login");
+                progressDialog.setMessage("Logging in.... Please wait");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
 
 //                Log.i("LOGIN", String.valueOf(userdetails));
 
@@ -78,16 +85,18 @@ public class Login extends AppCompatActivity implements AsyncResponse{
 
     @Override
     public void processFinish(String output) {
-//        Log.i("Login",output);
+        Log.e("Login",output);
+        progressDialog.hide();
 
         if(output.equals("NULL") ){
             Toast.makeText(getApplicationContext(), "Incorrect Login Details.. Try again", Toast.LENGTH_SHORT).show();
         }
         else{
             Intent intent= new Intent(getApplicationContext(),MainPage.class);
+            intent.putExtra("new",true);
             intent.putExtra("data" , output);
             startActivity(intent);
-            finish();
+//            finish();
         }
     }
 }

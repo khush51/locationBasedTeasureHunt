@@ -2,6 +2,7 @@ package com.example.treasurehunt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ public class startNew extends AppCompatActivity implements AsyncResponse {
     Spinner s2;
     Button back_button,submit_location;
     String locality;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class startNew extends AppCompatActivity implements AsyncResponse {
 
         final GetGameData getGameData = new GetGameData();
 
+        progressDialog = new ProgressDialog(this);
+
         getGameData.value = this;
 
         submit_location=findViewById(R.id.submit_location);
@@ -38,10 +42,10 @@ public class startNew extends AppCompatActivity implements AsyncResponse {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(startNew.this, "exiting..", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(startNew.this, "exiting..", Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(startNew.this,Start.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
 
@@ -71,7 +75,13 @@ public class startNew extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View view) {
                 Toast.makeText(startNew.this,"location submitted", Toast.LENGTH_SHORT).show();
+                Log.e("start new",DemoData.loggedInPlayer.name);
                 getGameData.execute(locality);
+
+                progressDialog.setTitle("New Game");
+                progressDialog.setMessage("Loading Game... Please wait..");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
 
 //                Intent intent= new Intent(startNew.this,Clues.class);
 //               // DemoData.selectedLocality = "Siolim";//s2.getSelectedItem().toString();
@@ -84,7 +94,8 @@ public class startNew extends AppCompatActivity implements AsyncResponse {
 
     @Override
     public void processFinish(String output) {
-        Log.e("game data",output);
+        Log.e("start new : game data",output);
+        progressDialog.hide();
         Intent clueintent= new Intent(startNew.this,Clues.class);
         clueintent.putExtra("data",output);
         startActivity(clueintent);

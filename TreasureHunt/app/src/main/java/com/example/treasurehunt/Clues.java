@@ -82,73 +82,95 @@ public class Clues extends AppCompatActivity {
         }
 
  */
+        Log.e("clue",DemoData.loggedInPlayer.name);
 
         Intent getintent = getIntent();
         String data = getintent.getStringExtra("data");
+        boolean ifnew = getintent.getBooleanExtra("new",false);
 
-        int i, j = 0 , k=0, l, flag=0;
-        String gamedata[] = new String[10];
-        for( i = 0 ; i < data.length() ; i++)
-        {
-            if(data.charAt(i) == '$'){
+        if(ifnew) {
 
-                gamedata[j] = data.substring(k , i);
-                Log.i("loop" , gamedata[j]);
-                j++;
-                k = i+1;
+
+            int i, j = 0, k = 0, l, flag = 0;
+            String gamedata[] = new String[10];
+            for (i = 0; i < data.length(); i++) {
+                if (data.charAt(i) == '$') {
+
+                    gamedata[j] = data.substring(k, i);
+                    Log.i("loop", gamedata[j]);
+                    j++;
+                    k = i + 1;
+                }
             }
-        }
 //        scoredata[j] = data.substring(k , data.length());
 
-        Log.e("llll","goooooo");
-        i = 0;
-        j = 0;
-        k = 0;
-        l = 0;
-
-        ArrayList<LocationClass> locationclue = new ArrayList<LocationClass>();
-
-        String[] temp = new String[4];
-
-        while(gamedata[i] != null){
-            LocationClass locationClass = new LocationClass();
+            Log.e("llll", "goooooo");
+            i = 0;
+            j = 0;
             k = 0;
             l = 0;
 
-            Log.e("score 222",gamedata[i]);
-            for(j = 0 ; j < gamedata[i].length() ; j++)
-            {
-                if(gamedata[i].charAt(j) == '/'){
+            ArrayList<LocationClass> locationclue = new ArrayList<LocationClass>();
 
-                    temp[l] = gamedata[i].substring(k , j);
-                    Log.i("loop" , temp[l]);
-                    l++;
-                    k = j+1;
+            String[] temp = new String[4];
+
+            while (gamedata[i] != null) {
+                LocationClass locationClass = new LocationClass();
+                k = 0;
+                l = 0;
+
+                Log.e("score 222", gamedata[i]);
+                for (j = 0; j < gamedata[i].length(); j++) {
+                    if (gamedata[i].charAt(j) == '/') {
+
+                        temp[l] = gamedata[i].substring(k, j);
+                        Log.i("loop", temp[l]);
+                        l++;
+                        k = j + 1;
+                    }
                 }
-            }
-            temp[l] = gamedata[i].substring(k , gamedata[i].length());
-//            Log.e("score 333",temp[i]);
+                temp[l] = gamedata[i].substring(k, gamedata[i].length());
+                Log.e("score 333", temp[l]);
 
-            locationClass.locality = temp[0];
-            locationClass.longitude = Double.valueOf(temp[1]);
-            locationClass.latitude = Double.valueOf(temp[2]);
-            locationClass.clues.add(temp[3]);
+                DemoData.gameDetails.locality = temp[0];
+
+                locationClass.locality = temp[0];
+                locationClass.longitude = Double.valueOf(temp[1]);
+                locationClass.latitude = Double.valueOf(temp[2]);
+                locationClass.clues.add(temp[3]);
 //            Log.e("score 333",temp[2]);
-            flag++;
-            if(flag % 3 == 0){
-                locationclue.add(locationClass);
-                DemoData.locations.add(locationClass);
+                flag++;
+                if (flag % 3 == 0) {
+                    locationclue.add(locationClass);
+                    DemoData.locations.add(locationClass);
+                }
+
+                Log.e("ganescore", locationClass.locality + "" + locationClass.clues.get(0));
+
+                i++;
+
             }
-
-            Log.e("ganescore",locationClass.locality+""+locationClass.clues.get(0));
-
-            i++;
-
         }
 
+//        Log.i("check", String.valueOf(DemoData.loggedInPlayer.no_complete_sets));
 
 
-        clue.setText(DemoData.locations.get(DemoData.loggedInPlayer.no_complete_sets).clues.get(0));
+
+        Log.e("continuekhatir" , String.valueOf(DemoData.locations.size()) + " " + DemoData.loggedInPlayer.no_complete_sets);
+
+        if(DemoData.locations.size() <= Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)) {
+            clue.setText(DemoData.locations.get(0).clues.get(0));
+            DemoData.gameDetails.locality = DemoData.locations.get(0).locality;
+            DemoData.gameDetails.latitude = DemoData.locations.get(0).latitude;
+            DemoData.gameDetails.longitude = DemoData.locations.get(0).longitude;
+        }
+        else {
+            clue.setText(DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets) - 1).clues.get(0));
+            DemoData.gameDetails.locality = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).locality;
+            DemoData.gameDetails.latitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).latitude;
+            DemoData.gameDetails.longitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).longitude;
+        }
+
 
         back_button=findViewById(R.id.back_buttton);
 
@@ -173,6 +195,7 @@ public class Clues extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.e("clue",DemoData.loggedInPlayer.name);
                 if(correct == true)
                 {
                     startActivity(new Intent(getApplicationContext() , Correct_ans.class));
@@ -214,15 +237,15 @@ public class Clues extends AppCompatActivity {
                     svm.getMapAsync(new OnMapReadyCallback() {
                         @Override
                         public void onMapReady(GoogleMap googleMap) {
-                            if(distancebetween(location.getLatitude() , location.getLongitude() , DemoData.locations.get(DemoData.loggedInPlayer.no_complete_sets).latitude , DemoData.locations.get(DemoData.loggedInPlayer.no_complete_sets).longitude) < 0.01)
+                            if(distancebetween(location.getLatitude() , location.getLongitude() , DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-2).latitude , DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).longitude) < 0.01)
                             {
-                                Toast.makeText(getApplicationContext() , "done" , Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext() , "done" , Toast.LENGTH_SHORT).show();
 
                                 correct = true;
                             }
                             else
                             {
-                                Toast.makeText(getApplicationContext() , "not done" , Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext() , "not done" , Toast.LENGTH_SHORT).show();
                                 correct = false;
                             }
 

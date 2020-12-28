@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class Correct_ans extends AppCompatActivity {
+public class Correct_ans extends AppCompatActivity implements AsyncResponse {
 
     Button back_button,cont;
     Animation topAnim,bottomAnim,middleAnim;
@@ -48,6 +49,11 @@ public class Correct_ans extends AppCompatActivity {
         correcttxt.setAnimation(middleAnim);
         correctimg.setAnimation(middleAnim);
 
+        back_button.setVisibility(View.GONE);
+
+        final UpdateScore updateScore = new UpdateScore(this);
+
+        updateScore.score = this;
 
         //back button get to Clue page for next clue
         back_button.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +72,25 @@ public class Correct_ans extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(Correct_ans.this, "Continue..,", Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(Correct_ans.this,Clues.class);
-                startActivity(intent);
-                finish();
+                DemoData.loggedInPlayer.no_complete_sets = String.valueOf(Integer.valueOf(DemoData.loggedInPlayer.no_complete_sets) + 1);
+                DemoData.loggedInPlayer.points = String.valueOf(Integer.valueOf(DemoData.loggedInPlayer.points) + 50);
+
+                Log.e("hellllo",DemoData.loggedInPlayer.name);
+                updateScore.execute();
+
             }
         });
 
+    }
+
+    @Override
+    public void processFinish(String output) {
+        Log.e("Correct output",output);
+//        Toast.makeText(this, output, Toast.LENGTH_SHORT).show();
+        Intent intent= new Intent(Correct_ans.this,Clues.class);
+//        intent.putExtra("data" , DemoData.loggedInPlayer.name+"$"+DemoData.loggedInPlayer.username+"$"+DemoData.loggedInPlayer.no_complete_sets+"$"+DemoData.loggedInPlayer.points+"$");
+        intent.putExtra("new",false);
+        startActivity(intent);
+//        finish();
     }
 }

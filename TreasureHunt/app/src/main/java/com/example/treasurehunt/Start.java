@@ -4,12 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class Start extends AppCompatActivity {
 
@@ -48,7 +48,7 @@ public class Start extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Start.this, "exiting..", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(Start.this, "exiting..", Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(Start.this,MainPage.class);
                 startActivity(intent);
                 finish();
@@ -59,8 +59,9 @@ public class Start extends AppCompatActivity {
        startbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Start.this, "starting a game not yet done!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext() , startNew.class));
+//                Toast.makeText(Start.this, "starting a game not yet done!", Toast.LENGTH_SHORT).show();
+                Log.e("start",DemoData.loggedInPlayer.name);
+                startActivity(new Intent(getApplicationContext() , StartNew.class));
 //                finish();
             }
         });

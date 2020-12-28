@@ -4,7 +4,7 @@ public class PlayerClass {
 
     String name;
     String username;
-    long points;
-    int no_complete_sets;
+    String points;
+    String no_complete_sets;
 
 }

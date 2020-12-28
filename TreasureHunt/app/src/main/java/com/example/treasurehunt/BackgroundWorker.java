@@ -30,7 +30,7 @@ public class BackgroundWorker extends AsyncTask<String , Void , String> {
 
     public BackgroundWorker(Context context) {
         this.context = context;
-        Toast.makeText(this.context , "Yea, came in..."+context.toString() , Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this.context , "Yea, came in..."+context.toString() , Toast.LENGTH_SHORT).show();
 //        this.alertDialog = new AlertDialog.Builder(context).create();
     }
 
@@ -48,9 +48,9 @@ public class BackgroundWorker extends AsyncTask<String , Void , String> {
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
-                Log.i("logtag" , "before o/p stream");
+//                Log.i("logtag" , "before o/p stream");
                 OutputStream outputStream = httpURLConnection.getOutputStream();
-                Log.i("logtag" , "after o/p stream");
+//                Log.i("logtag" , "after o/p stream");
 //                OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8")+"&"
@@ -131,7 +131,7 @@ public class BackgroundWorker extends AsyncTask<String , Void , String> {
     @Override
     protected void onPostExecute(String result) {
 //        Toast.makeText(context , result ,Toast.LENGTH_SHORT).show();
-        Log.e("ytuufgig",result);
+//        Log.e("ytuufgig",result);
         value.processFinish(result);
 
     }

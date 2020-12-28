@@ -9,6 +9,7 @@ public class DemoData {
 //    static ArrayList<GameDetails> gameDetails = new ArrayList<>();
 
     static PlayerClass loggedInPlayer = new PlayerClass();
+    static GameDetails gameDetails = new GameDetails();
 
 //    static String selectedLocality;
 
