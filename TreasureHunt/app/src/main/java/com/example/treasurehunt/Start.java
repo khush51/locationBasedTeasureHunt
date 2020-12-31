@@ -60,7 +60,7 @@ public class Start extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                Toast.makeText(Start.this, "starting a game not yet done!", Toast.LENGTH_SHORT).show();
-                Log.e("start",DemoData.loggedInPlayer.name);
+//                Log.e("start",DemoData.loggedInPlayer.name);
                 startActivity(new Intent(getApplicationContext() , StartNew.class));
 //                finish();
             }

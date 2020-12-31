@@ -112,7 +112,7 @@ public class Clues extends AppCompatActivity {
 
             ArrayList<LocationClass> locationclue = new ArrayList<LocationClass>();
 
-            String[] temp = new String[4];
+            String[] temp = new String[15];
 
             while (gamedata[i] != null) {
                 LocationClass locationClass = new LocationClass();
@@ -165,10 +165,10 @@ public class Clues extends AppCompatActivity {
             DemoData.gameDetails.longitude = DemoData.locations.get(0).longitude;
         }
         else {
-            clue.setText(DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)).clues.get(0));
-            DemoData.gameDetails.locality = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).locality;
-            DemoData.gameDetails.latitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).latitude;
-            DemoData.gameDetails.longitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).longitude;
+            clue.setText(DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets) ).clues.get(0));
+            DemoData.gameDetails.locality = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets) +1).locality;
+            DemoData.gameDetails.latitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)+1).latitude;
+            DemoData.gameDetails.longitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)+1).longitude;
         }
 
 

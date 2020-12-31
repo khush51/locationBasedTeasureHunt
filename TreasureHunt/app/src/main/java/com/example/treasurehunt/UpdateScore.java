@@ -89,7 +89,7 @@ public class UpdateScore extends AsyncTask<String , Void , String> {
     @Override
     protected void onPostExecute(String result) {
 //        Toast.makeText(context ,result ,Toast.LENGTH_SHORT).show();
-        Log.e("update score",result);
+//        Log.e("update score",result);
         score.processFinish(result);
 
     }

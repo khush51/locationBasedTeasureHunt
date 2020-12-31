@@ -63,7 +63,7 @@ public class Score_board extends AppCompatActivity {
 
         ArrayList<Scores> gamescore = new ArrayList<Scores>();
 
-        String[] temp = new String[4];
+        String[] temp = new String[15];
 
         while(scoredata[i] != null){
             Scores game = new Scores();

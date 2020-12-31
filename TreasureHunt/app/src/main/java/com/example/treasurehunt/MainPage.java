@@ -64,7 +64,7 @@ public class MainPage extends AppCompatActivity implements AsyncResponse{
 
         if(check) {
             int i, j = 0, k = 0;
-            String dataarray[] = new String[4];
+            String dataarray[] = new String[15];
             for (i = 0; i < userData.length(); i++) {
                 if (userData.charAt(i) == '$') {
 //                Log.i("loop" , userData.substring(k , i));
@@ -148,12 +148,12 @@ public class MainPage extends AppCompatActivity implements AsyncResponse{
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getApplicationContext() , "Logging out..." , Toast.LENGTH_SHORT).show();
-                DemoData.loggedInPlayer.username = "";
-                DemoData.loggedInPlayer.no_complete_sets = "0";
-                DemoData.loggedInPlayer.points = "0";
-                DemoData.loggedInPlayer.name = "";
-                DemoData.loggedInPlayer = null;
+//                Toast.makeText(getApplicationContext() , "Logging out..." , Toast.LENGTH_SHORT).show();
+//                DemoData.loggedInPlayer.username = "";
+//                DemoData.loggedInPlayer.no_complete_sets = "0";
+//                DemoData.loggedInPlayer.points = "0";
+//                DemoData.loggedInPlayer.name = "";
+//                DemoData.loggedInPlayer = null;
                 Intent intent=new Intent(MainPage.this,Homepage.class);
                 startActivity(intent);
                 finish(); //if pressed back goes back of application
@@ -193,7 +193,7 @@ public class MainPage extends AppCompatActivity implements AsyncResponse{
             public void onClick(View view) {
 //                Toast.makeText(MainPage.this, "New game", Toast.LENGTH_SHORT).show();
                 Log.e("main page",DemoData.loggedInPlayer.name);
-                DemoData.loggedInPlayer.no_complete_sets = String.valueOf(1);
+                DemoData.loggedInPlayer.no_complete_sets = String.valueOf(0);
                 DemoData.loggedInPlayer.points = String.valueOf(0);
                 Intent intent =new Intent(MainPage.this,Start.class);
                 startActivity(intent);
