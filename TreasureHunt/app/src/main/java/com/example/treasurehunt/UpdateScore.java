@@ -28,6 +28,14 @@ public class UpdateScore extends AsyncTask<String , Void , String> {
     @Override
     protected String doInBackground(String... params) {
 
+        String name  = params[0];
+        String locality = params[1];
+        String latitude = params[2];
+        String longitude  = params[3];
+        String points = params[4];
+        String complete_sets = params[5];
+
+
         String score_url = "https://hunttreasure.000webhostapp.com/updatescore.php";
 
         try {
@@ -41,12 +49,12 @@ public class UpdateScore extends AsyncTask<String , Void , String> {
 //            Log.i("logtag" , "after o/p stream");
 //                OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(DemoData.loggedInPlayer.username,"UTF-8")+"&"
-                    + URLEncoder.encode("locality","UTF-8")+"="+URLEncoder.encode(DemoData.gameDetails.locality,"UTF-8")+"&"
-                    +URLEncoder.encode("latitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(DemoData.gameDetails.latitude),"UTF-8")+"&"
-                    +URLEncoder.encode("longitude","UTF-8")+"="+URLEncoder.encode(String.valueOf(DemoData.gameDetails.longitude),"UTF-8")+"&"
-                    +URLEncoder.encode("score","UTF-8")+"="+URLEncoder.encode(String.valueOf(DemoData.loggedInPlayer.points),"UTF-8")+"&"
-                    +URLEncoder.encode("level","UTF-8")+"="+URLEncoder.encode(String.valueOf(DemoData.loggedInPlayer.no_complete_sets),"UTF-8");
+            String post_data = URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(name,"UTF-8")+"&"
+                    + URLEncoder.encode("locality","UTF-8")+"="+URLEncoder.encode(locality,"UTF-8")+"&"
+                    +URLEncoder.encode("latitude","UTF-8")+"="+URLEncoder.encode(latitude,"UTF-8")+"&"
+                    +URLEncoder.encode("longitude","UTF-8")+"="+URLEncoder.encode(longitude,"UTF-8")+"&"
+                    +URLEncoder.encode("score","UTF-8")+"="+URLEncoder.encode(points,"UTF-8")+"&"
+                    +URLEncoder.encode("level","UTF-8")+"="+URLEncoder.encode(complete_sets,"UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();

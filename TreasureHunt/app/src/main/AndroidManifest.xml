@@ -22,7 +22,7 @@
             android:value="AIzaSyDHb5VFUrJfArjg_-pbuh0ElY1JZKIwL1g"/>
 
         <activity android:name=".Clues"></activity>
-        <activity android:name=".startNew" />
+        <activity android:name=".StartNew" />
         <activity android:name=".Start" />
         <activity android:name=".Login" />
         <activity android:name=".Correct_ans" />

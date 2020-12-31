@@ -37,6 +37,10 @@ public class StartNew extends AppCompatActivity implements AsyncResponse {
         if(cont){
             locality = DemoData.gameDetails.locality;
             Log.e("startnew",locality);
+            while (DemoData.locations.size() > 0){
+                DemoData.locations.remove(0);
+            }
+
             getGameData.execute(locality);
             progressDialog.setTitle("");
             progressDialog.setMessage("Loading Game... Please wait..");
@@ -86,6 +90,9 @@ public class StartNew extends AppCompatActivity implements AsyncResponse {
             @Override
             public void onClick(View view) {
                 Toast.makeText(StartNew.this,"location submitted", Toast.LENGTH_SHORT).show();
+                while (DemoData.locations.size() > 0){
+                    DemoData.locations.remove(0);
+                }
                 Log.e("start new",DemoData.loggedInPlayer.name);
                 getGameData.execute(locality);
 

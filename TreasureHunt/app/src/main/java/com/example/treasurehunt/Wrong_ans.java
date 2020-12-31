@@ -69,11 +69,16 @@ public class Wrong_ans extends AppCompatActivity implements AsyncResponse {
 
                 Log.e("hehhhlo", String.valueOf(DemoData.loggedInPlayer.name));
 //                Toast.makeText(Wrong_ans.this, "Exiting...", Toast.LENGTH_SHORT).show();
-                DemoData.loggedInPlayer.no_complete_sets = String.valueOf(0);
-                DemoData.loggedInPlayer.points = String.valueOf(0);
+//                DemoData.loggedInPlayer.no_complete_sets = String.valueOf(0);
+//                DemoData.loggedInPlayer.points = String.valueOf(0);
 
                 Log.e("hellllo",String.valueOf(DemoData.gameDetails.locality));
-                updateScore.execute();
+                updateScore.execute(DemoData.loggedInPlayer.name,
+                        DemoData.gameDetails.locality,
+                        String.valueOf(DemoData.gameDetails.latitude),
+                        String.valueOf(DemoData.gameDetails.longitude),
+                        "0",
+                        "0");
 
             }
         });

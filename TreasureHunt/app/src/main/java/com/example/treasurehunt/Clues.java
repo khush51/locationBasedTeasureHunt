@@ -165,7 +165,7 @@ public class Clues extends AppCompatActivity {
             DemoData.gameDetails.longitude = DemoData.locations.get(0).longitude;
         }
         else {
-            clue.setText(DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets) - 1).clues.get(0));
+            clue.setText(DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)).clues.get(0));
             DemoData.gameDetails.locality = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).locality;
             DemoData.gameDetails.latitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).latitude;
             DemoData.gameDetails.longitude = DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).longitude;
@@ -237,7 +237,7 @@ public class Clues extends AppCompatActivity {
                     svm.getMapAsync(new OnMapReadyCallback() {
                         @Override
                         public void onMapReady(GoogleMap googleMap) {
-                            if(distancebetween(location.getLatitude() , location.getLongitude() , DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-2).latitude , DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)-1).longitude) < 0.01)
+                            if(distancebetween(location.getLatitude() , location.getLongitude() , DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)).latitude , DemoData.locations.get(Integer.parseInt(DemoData.loggedInPlayer.no_complete_sets)).longitude) < 0.01)
                             {
 //                                Toast.makeText(getApplicationContext() , "done" , Toast.LENGTH_SHORT).show();
 

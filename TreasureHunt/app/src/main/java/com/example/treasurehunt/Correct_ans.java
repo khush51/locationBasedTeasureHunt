@@ -73,10 +73,15 @@ public class Correct_ans extends AppCompatActivity implements AsyncResponse {
             public void onClick(View view) {
                 Toast.makeText(Correct_ans.this, "Continue..,", Toast.LENGTH_SHORT).show();
                 DemoData.loggedInPlayer.no_complete_sets = String.valueOf(Integer.valueOf(DemoData.loggedInPlayer.no_complete_sets) + 1);
-                DemoData.loggedInPlayer.points = String.valueOf(Integer.valueOf(DemoData.loggedInPlayer.points) + 50);
+                DemoData.loggedInPlayer.points = String.valueOf(Integer.valueOf(DemoData.loggedInPlayer.no_complete_sets) * 50);
 
                 Log.e("hellllo",DemoData.loggedInPlayer.name);
-                updateScore.execute();
+                updateScore.execute(DemoData.loggedInPlayer.name,
+                        DemoData.gameDetails.locality,
+                        String.valueOf(DemoData.gameDetails.latitude),
+                        String.valueOf(DemoData.gameDetails.longitude),
+                        String.valueOf(DemoData.loggedInPlayer.points),
+                        String.valueOf(DemoData.loggedInPlayer.no_complete_sets));
 
             }
         });
@@ -87,6 +92,15 @@ public class Correct_ans extends AppCompatActivity implements AsyncResponse {
     public void processFinish(String output) {
         Log.e("Correct output",output);
 //        Toast.makeText(this, output, Toast.LENGTH_SHORT).show();
+
+        if(Integer.valueOf(DemoData.loggedInPlayer.no_complete_sets) == 3){
+            Toast.makeText(this, "You have already explored this locality... May choose some other location!", Toast.LENGTH_SHORT).show();
+            Intent intent= new Intent(Correct_ans.this,StartNew.class);
+//        intent.putExtra("data" , DemoData.loggedInPlayer.name+"$"+DemoData.loggedInPlayer.username+"$"+DemoData.loggedInPlayer.no_complete_sets+"$"+DemoData.loggedInPlayer.points+"$");
+            intent.putExtra("new",false);
+            startActivity(intent);
+
+        }
         Intent intent= new Intent(Correct_ans.this,Clues.class);
 //        intent.putExtra("data" , DemoData.loggedInPlayer.name+"$"+DemoData.loggedInPlayer.username+"$"+DemoData.loggedInPlayer.no_complete_sets+"$"+DemoData.loggedInPlayer.points+"$");
         intent.putExtra("new",false);

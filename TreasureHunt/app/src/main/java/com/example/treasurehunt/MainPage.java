@@ -148,6 +148,12 @@ public class MainPage extends AppCompatActivity implements AsyncResponse{
             @Override
             public void onClick(View view) {
 
+                Toast.makeText(getApplicationContext() , "Logging out..." , Toast.LENGTH_SHORT).show();
+                DemoData.loggedInPlayer.username = "";
+                DemoData.loggedInPlayer.no_complete_sets = "0";
+                DemoData.loggedInPlayer.points = "0";
+                DemoData.loggedInPlayer.name = "";
+                DemoData.loggedInPlayer = null;
                 Intent intent=new Intent(MainPage.this,Homepage.class);
                 startActivity(intent);
                 finish(); //if pressed back goes back of application
